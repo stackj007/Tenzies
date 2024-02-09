@@ -2,15 +2,6 @@ import { useState } from 'react'
 import Die from './Components/Die'
 import './App.css'
 
-/**
- *  Create a `Roll Dice` button that will re-roll
- * all 10 dice
- *
- * Clicking the button should generate a new array of numbers
- * and set the `dice` state to that new array (thus re-rendering
- * the array to the page)
- */
-
 function App() {
   const [Dice, setDice] = useState(randomNewDice())
 
@@ -30,7 +21,11 @@ function App() {
   }
 
   const diceElements = Dice.map((die, index) => (
-    <Die key={index} value={die.value} />
+    <Die
+      key={index}
+      value={die.value}
+      isHeld={die.isHeld}
+    />
   ))
 
   return (
