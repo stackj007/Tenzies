@@ -64,6 +64,15 @@ main {
   border-radius: 15px;
   margin: auto;
   cursor: pointer;
+  margin: 1rem;
+}
+
+.roll-button:focus {
+  outline: none;
+}
+
+.roll-button:active {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 820px) {

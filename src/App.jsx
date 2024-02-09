@@ -3,7 +3,7 @@ import Die from './Components/Die'
 import './App.css'
 
 /**
- * Challenge: Create a `Roll Dice` button that will re-roll
+ *  Create a `Roll Dice` button that will re-roll
  * all 10 dice
  *
  * Clicking the button should generate a new array of numbers
@@ -17,19 +17,21 @@ function App() {
   function randomNewDice() {
     const numbers = []
     for (let i = 0; i < 10; i++) {
-      const randomNumber = Math.floor(Math.random() * 6 + 1)
-      numbers.push(randomNumber)
+      numbers.push({
+        value: Math.floor(Math.random() * 6 + 1),
+        isHeld: false,
+      })
     }
     return numbers
   }
 
-  const diceElements = Dice.map((die, index) => (
-    <Die key={index} value={die} />
-  ))
-
   function rollDice() {
     setDice(randomNewDice)
   }
+
+  const diceElements = Dice.map((die, index) => (
+    <Die key={index} value={die.value} />
+  ))
 
   return (
     <>
