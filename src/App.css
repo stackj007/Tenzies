@@ -21,9 +21,12 @@ main {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
   gap: 100px;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
 }
 
-.dice-box {
+.die-face {
   background-color: #ebebeb;
   height: 100px;
   width: 50px;
@@ -34,29 +37,22 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.dice-box:hover {
+.die-face:hover {
   transform: translateY(-5px); /* Slight lift on hover */
 }
 
-.dice-num {
-  cursor: pointer;
-  font-weight: bold;
-  padding: 10px;
-
-  color: #333;
-}
-
 @media (min-width: 768px) {
-  .dice-box {
-    height: 120px;
-    width: 60px;
+  .die-face {
+    height: 90px;
+    width: 70px;
   }
 }
 
 @media (min-width: 1024px) {
-  .dice-box {
+  .die-face {
     height: 140px;
     width: 70px;
   }
