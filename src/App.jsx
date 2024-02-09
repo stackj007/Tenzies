@@ -2,6 +2,17 @@ import { useState } from 'react'
 import Die from './Components/Die'
 import './App.css'
 
+function randomNewDice() {
+  const numbers = []
+  for (let i = 0; i < 10; i++) {
+    const randomNumber = Math.floor(Math.random() * 6 + 1)
+    numbers.push(randomNumber)
+  }
+  return numbers
+}
+
+console.log(randomNewDice())
+
 function App() {
   return (
     <>
