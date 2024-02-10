@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { nanoid } from 'nanoid'
 import Die from './Components/Die'
 import './App.css'
 
@@ -9,6 +10,7 @@ function App() {
     const numbers = []
     for (let i = 0; i < 10; i++) {
       numbers.push({
+        id: nanoid(),
         value: Math.floor(Math.random() * 6 + 1),
         isHeld: false,
       })
@@ -17,14 +19,20 @@ function App() {
   }
 
   function rollDice() {
-    setDice(randomNewDice)
+    setDice(randomNewDice())
   }
 
-  const diceElements = Dice.map((die, index) => (
+  function holdDice(id) {
+    console.log(id)
+  }
+
+  const diceElements = Dice.map((die) => (
     <Die
-      key={index}
+      key={die.id}
+      id={die.id}
       value={die.value}
       isHeld={die.isHeld}
+      holdDice={holdDice}
     />
   ))
 
