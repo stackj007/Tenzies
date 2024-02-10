@@ -19,7 +19,16 @@ function App() {
   }
 
   function rollDice() {
-    setDice(randomNewDice())
+    const updatedDie = Dice.map((die) => {
+      if (!die.isHeld) {
+        return {
+          ...die,
+          value: Math.floor(Math.random() * 6 + 1),
+        }
+      }
+      return die
+    })
+    setDice(updatedDie)
   }
 
   function holdDice(id) {
