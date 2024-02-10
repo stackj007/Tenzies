@@ -4,16 +4,20 @@ import Die from './Components/Die'
 import './App.css'
 
 function App() {
-  const [Dice, setDice] = useState(randomNewDice())
+  const [Dice, setDice] = useState(newDice())
 
-  function randomNewDice() {
+  function generateNewDice() {
+    return {
+      id: nanoid(),
+      value: Math.floor(Math.random() * 6 + 1),
+      isHeld: false,
+    }
+  }
+
+  function newDice() {
     const numbers = []
     for (let i = 0; i < 10; i++) {
-      numbers.push({
-        id: nanoid(),
-        value: Math.floor(Math.random() * 6 + 1),
-        isHeld: false,
-      })
+      numbers.push(generateNewDice())
     }
     return numbers
   }
@@ -21,10 +25,7 @@ function App() {
   function rollDice() {
     const updatedDie = Dice.map((die) => {
       if (!die.isHeld) {
-        return {
-          ...die,
-          value: Math.floor(Math.random() * 6 + 1),
-        }
+        return generateNewDice()
       }
       return die
     })
