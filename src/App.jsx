@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 import Die from './Components/Die'
 import './App.css'
+import Confetti from 'react-confetti'
 
 function App() {
   const [Dice, setDice] = useState(newDice())
@@ -65,6 +66,7 @@ function App() {
 
   return (
     <>
+      {tenzies ? <Confetti /> : ''}
       <main>
         <h1 className="title">Tenzies</h1>
         <p className="instructions">
