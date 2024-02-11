@@ -1,10 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 import Die from './Components/Die'
 import './App.css'
 
 function App() {
   const [Dice, setDice] = useState(newDice())
+
+  useEffect(() => {
+    const allSameValue = Dice.every(
+      (die) => die.isHeld && Dice[0].value === die.value
+    )
+    if (allSameValue) {
+      console.log('you won!')
+    }
+  }, [Dice])
 
   function generateNewDice() {
     return {
