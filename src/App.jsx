@@ -5,12 +5,14 @@ import './App.css'
 
 function App() {
   const [Dice, setDice] = useState(newDice())
+  const [tenzies, setTenzies] = useState(false)
 
   useEffect(() => {
     const allSameValue = Dice.every(
       (die) => die.isHeld && Dice[0].value === die.value
     )
     if (allSameValue) {
+      setTenzies(true)
       console.log('you won!')
     }
   }, [Dice])
@@ -71,7 +73,7 @@ function App() {
         </p>
         <div className="die-container">{diceElements}</div>
         <button className="roll-button" onClick={rollDice}>
-          Roll Dice
+          {tenzies ? 'NewGame' : 'Roll Dice'}
         </button>
       </main>
     </>
