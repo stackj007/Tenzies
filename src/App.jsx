@@ -34,6 +34,10 @@ function App() {
     return numbers
   }
 
+  function newGame() {
+    setDice(newDice())
+    setTenzies(false)
+  }
   function rollDice() {
     const updatedDie = Dice.map((die) => {
       if (!die.isHeld) {
@@ -74,7 +78,10 @@ function App() {
           to freeze it at its current value between rolls.
         </p>
         <div className="die-container">{diceElements}</div>
-        <button className="roll-button" onClick={rollDice}>
+        <button
+          className="roll-button"
+          onClick={tenzies ? newGame : rollDice}
+        >
           {tenzies ? 'NewGame' : 'Roll Dice'}
         </button>
       </main>
